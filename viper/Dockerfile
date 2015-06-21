@@ -83,4 +83,9 @@ RUN git clone git://github.com/smarnach/pyexiftool.git && \
 
 USER nonroot
 WORKDIR /home/nonroot/workdir
-CMD ["../viper/viper.py"]
+RUN curl -SL http://raw.githubusercontent.com/ptcNOP/docker/viper_web/viper/run.sh && \
+  chmod a+rx run.sh
+
+USER nonroot
+WORKDIR /home/nonroot/workdir
+CMD ["./run.sh"]
